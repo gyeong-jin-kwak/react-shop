@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
-import capBlack from './images/cap_black.gif';
-import capBeige from './images/cap_beige.gif';
-import top from './images/top.gif';
+import Product from './components/Product';
+import productData from './data';
 
 function App() {
+  let [products, setProducts] = useState(productData);
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -39,30 +40,19 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <div className="item-wrp">
-              <img src={capBlack} alt="검정 모자" className="product-pic" />
-              <strong className="product-title">캡모자 black</strong>
-              <em className="product-price">25,000 won</em>
-              <p className="product-content">골프 캡모자</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="item-wrp">
-              <img src={capBeige} alt="베이지 모자" className="product-pic" />
-              <strong className="product-title">캡모자 black</strong>
-              <em className="product-price">25,000 won</em>
-              <p className="product-content">골프 캡모자</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="item-wrp">
-              <img src={top} alt="상의" className="product-pic" />
-              <strong className="product-title">캡모자 black</strong>
-              <em className="product-price">38,000 won</em>
-              <p className="product-content">outdoor</p>
-            </div>
-          </div>
+          {
+            products.map((product)=>{
+              return(
+                <Product 
+                  key={product.id} 
+                  title={product.title} 
+                  price={product.price} 
+                  content={product.content}
+                  url={product.url} 
+                />
+              )
+            })
+          }
         </div>
       </div>
     </div>

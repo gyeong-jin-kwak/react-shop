@@ -3,7 +3,11 @@
 }
 
 .main-copy {
-  background: url('./images/main.jpeg') no-repeat 100% 50%/100% auto;
+  background-image: url('images/main.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 80%;
+  border-radius: 0;
   color: #fff;
 }
 
