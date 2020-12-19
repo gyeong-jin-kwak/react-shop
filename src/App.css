@@ -6,3 +6,17 @@
   background: url('./images/main.jpeg') no-repeat 100% 50%/100% auto;
   color: #fff;
 }
+
+.item-wrp .product-pic {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.product-title,
+.product-price {
+  display: block;
+}
+
+.product-content {
+  font-size: 12px;
+}

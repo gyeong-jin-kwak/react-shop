@@ -13,3 +13,7 @@
 * npm install url-loader --save-dev
 * npm run eject (to show webpack.config.js)
 
+## Use Bootstrap
+* div.row = 12 column
+* col-md-4 가운데 'md' 추가시 모바일 수직정렬
+
