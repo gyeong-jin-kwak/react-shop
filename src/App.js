@@ -30,7 +30,7 @@ function App() {
           착하고 정직하게 만든, 매일 입고 싶은 옷
         </p>
         <p>
-          <Button variant="primary">Learn more</Button>
+          <Button variant="primary">더알아보기</Button>
         </p>
       </Jumbotron>
     </div>

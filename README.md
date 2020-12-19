@@ -11,4 +11,5 @@
   1. 설치
   2. css link 를 public/index.html 삽입
 * npm install url-loader --save-dev
+* npm run eject (to show webpack.config.js)
 
