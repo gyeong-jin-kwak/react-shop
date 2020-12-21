@@ -21,9 +21,8 @@
 ## Router setting
 1. react-router-dom 설치
 2. index.js 에서 react-router-dom 의 BrowserRouter or HashRouter 선언
-3. 
+3. Route 선언 <Route path="/" component={} >
 ### BrowserRouter 과 HashRouter 차이
 * HashRouter 에는 # 기호, 서버로 전달이 안됨
 * BrowserRouter 서버로 전달됨, 서버 setting이 필요
-* Route 선언 <Route path="/" component={} >
 
