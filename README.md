@@ -73,3 +73,31 @@ let Title = styled.h2`
 3. `npm install schema-utils`
 4. `my-alert2 { @extend my-alert1 }`
 5. `@mixin 함수(){} .my-alert{ @include 함수() }`
+
+## useEffect 
+* 컴포넌트가 mount 되었을 때
+* 컴포넌트가 update 되었을 때
+* 특정 코드를 실행
+* return은 **사라질 때** 사용 ex_해당 페이지에다 다른 페이지로 넘어가는 경우
+```
+useEffect(()=>{
+  console.log(111)
+})
+
+useEffect(()=>{
+  let timer = setTimeout(()=>{}, 2000); // 2초 후에 사라지도록
+  return function 끝나고_실행되는_함수_unmount(){코드} 
+  //detail 페이지에 사용하는 경우 다른 페이지로 넘어가거나 사라질 때 실행 됨
+})
+```
+*  **여러번** 사용해도 상관 없음 (가장 위 useEffect 부터 차례대로 수행)
+* 관련없는 컴포넌트가 업데이트 될 때마다 useEffect도 같이 업데이트 됨(자원 낭비) -> 대괄호를 사용하여 **조건 추가** [alert] alert 에만 실행
+```
+  useEffect(()=>{
+    let timer = setTimeout(()=>{setAlert(false)}, 2000);
+    console.log('컴포넌트가 렌더링 될때 useEffect 실행됩니다')
+  }, [ alert ]);
+```
+* 대괄호가 비었을 때 : 변경될때만 업데이트 실행
+  * 딱 한번만 실행됨 ( 로드가 될 때 )
+  * 조건에 맞는 함수가 비어있기 때문

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
@@ -13,15 +13,39 @@ let Title = styled.h2`
 `;
 
 const Detail = ({ products }) => {
-  
+
+  let [ alert, setAlert ] = useState(true);
+  let [ input, setInput ] = useState('');
   let history = useHistory();
   let { id } = useParams();
   let product_id = products.find((product)=>{
     return product.id == id
   });
 
+  useEffect(()=>{
+    // setTimeout은 변수에 넣어 사용
+    let timer = setTimeout(()=>{setAlert(false)}, 2000);
+    console.log('컴포넌트가 렌더링 될때 useEffect 실행됩니다')
+    
+    // 페이지 이동시 setTimeout 제거
+    return () => { clearTimeout(timer) }
+
+    // [] 는 조건, 비어있을 시 로드 될 때 딱 한번만 적용됨
+  }, [ alert ]);
+
   return (
-    <div className="containter">
+    <div className="container">
+      {
+        alert === true ? 
+        (<div className="alert-box">
+          <p className="alert-box__text">
+            재고가 얼마 남지 않았습니다.
+          </p>
+        </div>) : null
+      }
+      {input}
+      <input onChange={(e)=>{ setInput(e.target.value) }} placeholder="useEffect 확인용 input" />
+
       <div className="row">
         <div className="col-md-6">
           <img src={"." + product_id.url} alt={product_id.title} width="100%" />

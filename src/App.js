@@ -18,7 +18,7 @@ function App() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Link><Link to="/">Home</Link></Nav.Link>
-            <Nav.Link><Link to="/detail">Link</Link></Nav.Link>
+            <Nav.Link><Link to="/detail/0">Link</Link></Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -65,9 +65,9 @@ function App() {
           <Detail products={products} />
         </Route>
 
-        <Route path="/:id">
-        <div>아무거나 적었을 때 보여주세요</div>
-      </Route>
+        {/* <Route path="/:id">
+          <div>아무거나 적었을 때 보여주세요</div>
+        </Route> */}
       </Switch>
     </div>
   );

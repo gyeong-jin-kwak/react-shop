@@ -1,5 +1,23 @@
+.container {
+  width: 90%;
+}
+
 .back-btn {
   margin: 0 5px;
   border-color: blue;
   background-color: blue;
+
+  &:hover {
+    background-color: blue;
+    border-color: blue;
+  }
+}
+
+.alert-box {
+  margin: 20px auto;
+  background: #eee;
+
+  &__text {
+    padding: 8px 0;
+  }
 }
