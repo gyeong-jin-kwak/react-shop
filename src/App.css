@@ -24,3 +24,12 @@
 .product-content {
   font-size: 12px;
 }
+
+.product-detail .title,
+.product-detail .price {
+  display: block;
+}
+
+.product-detail .content {
+  margin-bottom: 0;
+}

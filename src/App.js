@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
+import Detail from './pages/Detail';
 import Product from './components/Product';
 import productData from './data';
 
@@ -16,8 +17,8 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link><Link to="/">Home</Link></Nav.Link>
+            <Nav.Link><Link to="/detail">Link</Link></Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -28,53 +29,46 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      <Switch>
+        <Route path="/" exact>
+          <Jumbotron className="main-copy">
+            <h1>Welcome, Inchant Field!</h1>
+            <p>
+              여행,액티비티,일상생활에도 Inchant Field 와 함께라면 어디든 갈 수 있어!
+              착하고 정직하게 만든, 매일 입고 싶은 옷
+            </p>
+            <p>
+              <Button variant="primary">더보기</Button>
+            </p>
+          </Jumbotron>
 
-      <Route path="/" exact>
-        <Jumbotron className="main-copy">
-          <h1>Welcome, Inchant Field!</h1>
-          <p>
-            여행,액티비티,일상생활에도 Inchant Field 와 함께라면 어디든 갈 수 있어!
-            착하고 정직하게 만든, 매일 입고 싶은 옷
-          </p>
-          <p>
-            <Button variant="primary">더보기</Button>
-          </p>
-        </Jumbotron>
-
-        <div className="container">
-          <div className="row">
-            {
-              products.map((product)=>{
-                return(
-                  <Product 
-                    key={product.id} 
-                    title={product.title} 
-                    price={product.price} 
-                    content={product.content}
-                    url={product.url} 
-                  />
-                )
-              })
-            }
-          </div>
-        </div>
-      </Route>
-      <Route path="/detail">
-        <div className="containter">
+          <div className="container">
             <div className="row">
-              <div className="col-md-6">
-                <img src="./images/cap_black.gif" alt="검은색 모자" width="100%" />
-              </div>
-              <div className="col-md-6 mt-4">
-                <strong className="pt-5">상품명</strong>
-                <p>상품설명</p>
-                <span>12000</span>
-                <button className="btn btn-danger">주문하기</button>
-              </div>
+              {
+                products.map((product)=>{
+                  return(
+                    <Product 
+                      key={product.id} 
+                      title={product.title} 
+                      price={product.price} 
+                      content={product.content}
+                      url={product.url} 
+                    />
+                  )
+                })
+              }
             </div>
-        </div>
-      </Route>
+          </div>
+        </Route>
+        
+        <Route path="/detail/:id">
+          <Detail products={products} />
+        </Route>
 
+        <Route path="/:id">
+        <div>아무거나 적었을 때 보여주세요</div>
+      </Route>
+      </Switch>
     </div>
   );
 }
