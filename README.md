@@ -107,10 +107,16 @@ useEffect(()=>{
 * 서버에 새로고침 없이 요청 도와줌
 * GET 요청: 특정 페이지 / 자료 읽기
 * POST 요청: 로그인 (id, 비번) / 정보를 숨겨서 **전달**
+* 따움표 -> json 자료형을 가지고 오는것 `"title" : "Flowey",`
+* object 자료형은 주고받을 수 없음 (axios는 자동으로 object화/ fetch는 object화 코드 필요)
 * Ajax 사용 방법
   1. jQuery ajax
   2. axios 설치
   3. javascript fetch()
 * `npm install axios`
 * `.then(()=>{})` 성공했을 때
+  * `.then((result)=>{console.log(result)})` 요청 결과의 모든 값을 보여줌
+  * `.then((result)=>{console.log(result.data)})`
 * `.catch(()=>{})` 실패했을 때
+* fetch 문법을 사용할 때도 동일 `fetch('https://apiurl.json').then()`
+  * axios는 자동으로 object로 바꿔주지만 **fetch** 는 자료를 object 로 변환하는 코드를 넣어주어야 함 -> **코드가 길어짐**
