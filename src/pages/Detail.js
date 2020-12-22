@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import './Detail.scss';
 
 let Box = styled.div`
   padding: 20px;
@@ -31,7 +32,7 @@ const Detail = ({ products }) => {
           <span className="price">{product_id.price} won</span>
           <button className="btn btn-danger">주문하기</button>
           <button 
-            className="btn btn-danger"
+            className="btn btn-danger back-btn"
             onClick={()=>{history.goBack()}}
             // onClick={()=>{history.push('/')}}
           >

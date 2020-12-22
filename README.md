@@ -69,3 +69,7 @@ let Title = styled.h2`
 
 ## sass 사용
 1. `yarn add node-sass`
+2. `npm install node-sass@4.14.`
+3. `npm install schema-utils`
+4. `my-alert2 { @extend my-alert1 }`
+5. `@mixin 함수(){} .my-alert{ @include 함수() }`
