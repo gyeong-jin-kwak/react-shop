@@ -15,6 +15,7 @@
 * yarn add react-router-dom
 * yarn add styled-components
 * yarn add node-sass
+* npm install axios
 
 ## Use Bootstrap
 * div.row = 12 column
@@ -101,3 +102,15 @@ useEffect(()=>{
 * 대괄호가 비었을 때 : 변경될때만 업데이트 실행
   * 딱 한번만 실행됨 ( 로드가 될 때 )
   * 조건에 맞는 함수가 비어있기 때문
+
+## Ajax
+* 서버에 새로고침 없이 요청 도와줌
+* GET 요청: 특정 페이지 / 자료 읽기
+* POST 요청: 로그인 (id, 비번) / 정보를 숨겨서 **전달**
+* Ajax 사용 방법
+  1. jQuery ajax
+  2. axios 설치
+  3. javascript fetch()
+* `npm install axios`
+* `.then(()=>{})` 성공했을 때
+* `.catch(()=>{})` 실패했을 때

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
+import axios from 'axios';
 import './App.css';
 import Detail from './pages/Detail';
 import Product from './components/Product';
 import productData from './data';
+
 
 import { Link, Route, Switch } from 'react-router-dom';
 
@@ -13,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Inchant Field</Navbar.Brand>
+        <Navbar.Brand href="#home"><Link to="/">Inchant Field</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
@@ -58,6 +60,20 @@ function App() {
                 })
               }
             </div>
+            <button 
+              className="btn btn-primary"
+              onClick={()=>{
+                axios.get('https://codingapple1.github.io/shop/data2.json')
+                .then(()=>{
+                  console.log('성공했어요')
+                })
+                .catch(()=>{
+                  console.log('실패했어요')
+                })
+              }}
+            > 
+              더보기
+            </button>
           </div>
         </Route>
         
