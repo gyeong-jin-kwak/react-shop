@@ -42,9 +42,9 @@ function App() {
               여행,액티비티,일상생활에도 Inchant Field 와 함께라면 어디든 갈 수 있어!
               착하고 정직하게 만든, 매일 입고 싶은 옷
             </p>
-            <p>
+            <div>
               <Button variant="primary">더보기</Button>
-            </p>
+            </div>
           </Jumbotron>
 
           <div className="container">
