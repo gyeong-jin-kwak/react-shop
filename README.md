@@ -120,3 +120,12 @@ useEffect(()=>{
 * `.catch(()=>{})` 실패했을 때
 * fetch 문법을 사용할 때도 동일 `fetch('https://apiurl.json').then()`
   * axios는 자동으로 object로 바꿔주지만 **fetch** 는 자료를 object 로 변환하는 코드를 넣어주어야 함 -> **코드가 길어짐**
+* `...shoes` 대괄호를 벗김 -> `[...shoes]` 다시 대괄호로 감싸줌 ( 완전한 카피본 )
+* `[...shoes, ...result.data]` 대괄호를 벗기고 다시 감싸줌 
+* 결과물 -> `[{}, {}, {}, {}, {}, {}]`
+* `setProducts([...products, ...result.data]);`
+* 두번째, 세번째 데이터가 필요할때는 count 변수를 만들어서 중간중간 + 1 이 되는 변수을 넣어줌
+* useEffect 에 사용
+
+## 로딩중
+* 위치: onClick 함수 안 axios 수행하기 전 

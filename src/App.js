@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import Detail from './pages/Detail';
 import Product from './components/Product';
+import Loading from './components/Loading';
 import productData from './data';
 
 
@@ -11,6 +12,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 function App() {
   let [products, setProducts] = useState(productData);
+  let [loading, setLoading] = useState(false);
 
   return (
     <div className="App">
@@ -21,6 +23,7 @@ function App() {
           <Nav className="ml-auto">
             <Nav.Link><Link to="/">Home</Link></Nav.Link>
             <Nav.Link><Link to="/detail/0">Link</Link></Nav.Link>
+            <Nav.Link><Link to="/test">test</Link></Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -60,20 +63,33 @@ function App() {
                 })
               }
             </div>
+            {/* 두번째, 세번째 데이터가 필요할때는 count 변수를 만들어서 중간중간 + 1 이 되는 변수을 넣어줌 */}
             <button 
               className="btn btn-primary"
               onClick={()=>{
-                axios.get('https://codingapple1.github.io/shop/data2.json')
+                // POST 요청시 header, 쿠키 등 전달 가능
+                // axios.post('서버url', {id: 'gyeong-jin', pw: 1234 });
+                setLoading(true);
+
+                axios.get('https://gyeong-jin-kwak.github.io/server/shop.json')
                 .then((result)=>{
-                  console.log(result.data)
+                  // 로딩중 안보이게 처리
+                  setLoading(false);
+                  console.log(result.data);
+                  setProducts([...products, ...result.data]);
                 })
                 .catch(()=>{
+                  // 로딩중 안보이게 처리
+                  setLoading(false);
                   console.log('실패했어요')
                 })
               }}
             > 
               더보기
             </button>
+
+            { loading === true ? <Loading /> : null }
+
           </div>
         </Route>
         
@@ -84,6 +100,10 @@ function App() {
         {/* <Route path="/:id">
           <div>아무거나 적었을 때 보여주세요</div>
         </Route> */}
+
+        <Route path="/test">
+          <Loading />
+        </Route>
       </Switch>
     </div>
   );
