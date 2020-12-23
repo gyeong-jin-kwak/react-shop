@@ -54,6 +54,7 @@ const Detail = ({ products }) => {
           <strong className="pt-5 title">{product_id.title}</strong>
           <p className="content">{product_id.content}</p>
           <span className="price">{product_id.price} won</span>
+          <Stock stock={product_id.num} />
           <button className="btn btn-danger">주문하기</button>
           <button 
             className="btn btn-danger back-btn"
@@ -68,6 +69,14 @@ const Detail = ({ products }) => {
         </div>
       </div>
     </div>
+  )
+}
+
+const Stock = ({stock}) => {
+  return(
+    <>
+      <div>재고:{stock}</div>
+    </>
   )
 }
 

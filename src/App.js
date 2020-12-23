@@ -57,7 +57,7 @@ function App() {
                       title={product.title} 
                       price={product.price} 
                       content={product.content}
-                      url={product.url} 
+                      url={product.url}
                     />
                   )
                 })
