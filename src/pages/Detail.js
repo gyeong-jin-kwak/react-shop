@@ -21,6 +21,7 @@ const Detail = ({ products }) => {
   let product_id = products.find((product)=>{
     return product.id == id
   });
+  let [num, setNum] = useState(product_id.num);
 
   useEffect(()=>{
     // setTimeout은 변수에 넣어 사용
@@ -54,8 +55,16 @@ const Detail = ({ products }) => {
           <strong className="pt-5 title">{product_id.title}</strong>
           <p className="content">{product_id.content}</p>
           <span className="price">{product_id.price} won</span>
-          <Stock stock={product_id.num} />
-          <button className="btn btn-danger">주문하기</button>
+          <Stock stock={num} />
+          <button 
+            className="btn btn-danger"
+            onClick={()=>{ 
+              var newObject = num;
+              setNum(newObject - 1)
+             }}
+          >
+              주문하기
+            </button>
           <button 
             className="btn btn-danger back-btn"
             onClick={()=>{history.goBack()}}
