@@ -60,7 +60,7 @@ const Detail = ({ products }) => {
             className="btn btn-danger"
             onClick={()=>{ 
               var newObject = num;
-              setNum(newObject - 1)
+              setNum(newObject - 1);
              }}
           >
               주문하기
