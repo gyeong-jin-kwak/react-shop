@@ -21,3 +21,14 @@
     padding: 8px 0;
   }
 }
+
+
+// 시작 적용, -enter, -enter-active
+.tab-enter {
+  opacity: 0;
+}
+
+.tab-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+}

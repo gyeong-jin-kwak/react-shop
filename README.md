@@ -16,6 +16,7 @@
 * yarn add styled-components
 * yarn add node-sass
 * npm install axios
+* npm install react-transition-group
 
 ## Use Bootstrap
 * div.row = 12 column
@@ -74,6 +75,26 @@ let Title = styled.h2`
 3. `npm install schema-utils`
 4. `my-alert2 { @extend my-alert1 }`
 5. `@mixin 함수(){} .my-alert{ @include 함수() }`
+
+## CSSTransition
+1. `npm install react-transition-group`
+2. `import { CSSTransition } from 'react-transition-group';`
+3. `import './Detail.scss';`
+4. 
+``` 
+<CSSTransition in={true} classNames="tab-animation" timeout={500}>
+  <TapComponent tab={tab} />
+</CSSTransition> 
+```
+  * in, classNames, timeout 속성
+    * in: boolean / true 속성일 때 실행
+    * classNames=""
+    * timeout: 애니메이션 실행 기간
+5. classNames에 설정한 classNames에 `-enter` `-enter-active` 를 css 추가
+`.tab-enter` , `.tab-enter-active`
+6. `useState()` 를 사용해서 true false 모두 관리
+
+      
 
 ## useEffect 
 * 컴포넌트가 mount 되었을 때

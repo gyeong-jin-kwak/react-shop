@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 import './Detail.scss';
+import { CSSTransition } from 'react-transition-group';
 
 let Box = styled.div`
   padding: 20px;
@@ -17,12 +19,14 @@ const Detail = ({ products }) => {
 
   let [ alert, setAlert ] = useState(true);
   let [ input, setInput ] = useState('');
+  let [ tab, setTab ] = useState(0);
   let history = useHistory();
   let { id } = useParams();
   let product_id = products.find((product)=>{
     return product.id == id
   });
-  let [num, setNum] = useState(product_id.num);
+  let [ num, setNum ] = useState(product_id.num);
+  let [ ani, setAni ] = useState(false);
 
   useEffect(()=>{
     // setTimeout은 변수에 넣어 사용
@@ -78,6 +82,46 @@ const Detail = ({ products }) => {
           </Box>
         </div>
       </div>
+
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-0"
+            onClick={()=>{
+              setAni(false);
+              setTab(0);
+            }}
+           >
+            탭1
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link 
+            eventKey="link-1"
+            onClick={()=>{
+              setAni(false);
+              setTab(1);
+            }}
+          >
+            탭2
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-2"
+            onClick={()=>{
+              setAni(false);
+              setTab(2);
+            }}
+          >
+            탭3
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <CSSTransition in={ani} classNames="tab" timeout={500}>
+        <TapComponent tab={tab} aniOn={setAni} />
+      </CSSTransition>
+
     </div>
   )
 }
@@ -88,6 +132,20 @@ const Stock = ({stock}) => {
       <div>재고:{stock}</div>
     </>
   )
+}
+
+const TapComponent = ({tab, aniOn}) => {
+  useEffect(()=>{
+    aniOn(true);
+  });
+
+  if(tab === 0){
+    return <div>1번 내용입니다</div>
+  } else if(tab === 1){
+    return <div>2번 내용입니다</div>
+  } else if(tab === 2){
+    return <div>3번 내용입니다</div>
+  }
 }
 
 export default Detail;
