@@ -129,3 +129,21 @@ useEffect(()=>{
 
 ## 로딩중
 * 위치: onClick 함수 안 axios 수행하기 전 
+
+## 데이터를 전달하는 방법
+1. props
+2. contextAPI
+  ## context API (props 기능)
+    * `props` 없이 자유롭게 값 공유 가능
+    * 컴포넌트 depth 가 깊을 경우 contextAPI 가 편할 수 있음
+    1. `React.creacteContext()` 범위 생성
+      *  `let numContext = React.createContext();`
+    2. 같은 값을 공유할 html의 범위를 감쌈
+      *  `<numContext.Provider value={num}></numContext.Provider>`
+    3. 사용 컴포넌트에서 `useContext()` 사용
+      *  `import React, { useContext } from 'react';`
+      *  `let num = useContext( numContext )`
+    4. 다른 컴포넌트에 있을 경우 부모 컴포넌트에서 export
+      * `export let numContext = React.createContext()`
+      * `import {numContext} from './App'`
+3. 리덕스

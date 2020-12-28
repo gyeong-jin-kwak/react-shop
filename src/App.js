@@ -10,6 +10,8 @@ import productData from './data';
 
 import { Link, Route, Switch } from 'react-router-dom';
 
+// let numContext = React.createContext();
+
 function App() {
   let [products, setProducts] = useState(productData);
   let [loading, setLoading] = useState(false);
@@ -47,22 +49,25 @@ function App() {
             </div>
           </Jumbotron>
 
-          <div className="container">
-            <div className="row">
-              {
-                products.map((product)=>{
-                  return(
-                    <Product 
-                      key={product.id} 
-                      title={product.title} 
-                      price={product.price} 
-                      content={product.content}
-                      url={product.url}
-                    />
-                  )
-                })
-              }
-            </div>
+          {/* <numContext.Provider value={num}> */}
+            <div className="container">
+              <div className="row">
+                {
+                  products.map((product)=>{
+                    return(
+                      <Product 
+                        key={product.id} 
+                        title={product.title} 
+                        price={product.price} 
+                        content={product.content}
+                        url={product.url}
+                      />
+                    )
+                  })
+                }
+              </div>
+            {/* </numContext.Provider> */}
+
             {/* 두번째, 세번째 데이터가 필요할때는 count 변수를 만들어서 중간중간 + 1 이 되는 변수을 넣어줌 */}
             <button 
               className="btn btn-primary"

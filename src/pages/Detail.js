@@ -12,6 +12,7 @@ let Title = styled.h2`
   color: ${props => props.myColor}
 `;
 
+
 const Detail = ({ products }) => {
 
   let [ alert, setAlert ] = useState(true);
