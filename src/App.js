@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import Detail from './pages/Detail';
 import Product from './components/Product';
+import Cart from './components/Cart';
 import Loading from './components/Loading';
 import productData from './data';
 
@@ -26,6 +27,7 @@ function App() {
             <Nav.Link><Link to="/">Home</Link></Nav.Link>
             <Nav.Link><Link to="/detail/0">Link</Link></Nav.Link>
             <Nav.Link><Link to="/test">test</Link></Nav.Link>
+            <Nav.Link><Link to="/cart">cart</Link></Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -105,6 +107,9 @@ function App() {
         {/* <Route path="/:id">
           <div>아무거나 적었을 때 보여주세요</div>
         </Route> */}
+        <Route path="/cart">
+          <Cart />
+        </Route>
 
         <Route path="/test">
           <Loading />
