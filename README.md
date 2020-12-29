@@ -171,6 +171,7 @@ useEffect(()=>{
       * `import {numContext} from './App'`
 3. 리덕스
   ## Redux
+    * **다른 파일에서 자주 사용하지 않는 데이터를 redux에 만들지 말 것**
     * `npm install redux react-redux` redux, react-redux 두개 설치
     * `index.js`
     * `import { Provider } from 'react-redux';`
@@ -239,4 +240,14 @@ const Cart = ({ state }) => {
   >
     +
   </button>
+  ```
+  * reducer 가 여러개 일 때 `let store = createStore(combineReducers(reducer, reducer2));`
+  ```
+  function reduxProps(state){
+    return{
+      // productName: state.name
+      state: state.reducer,
+      alertState: state.reducer2
+    }
+  }
   ```

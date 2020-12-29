@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 
 let defaultState = [
   {id: 0, name: '멋진신발', quantity: 2},
   {id: 1, name: '인챈트필드 신발', quantity: 5}
-]
+];
+
+let alertState = true;
 
 function reducer (state = defaultState, action){
   if (action.type === 'increase'){
@@ -30,7 +32,17 @@ function reducer (state = defaultState, action){
   // return state
 }
 
-let store = createStore(reducer);
+function reducer2 (state = alertState, action){
+  if(action.type === 'close') {
+    let copy = state;
+    copy = false;
+    return copy
+  } else {
+    return state
+  }
+}
+
+let store = createStore(combineReducers({reducer, reducer2}));
 
 ReactDOM.render(
   <React.StrictMode>

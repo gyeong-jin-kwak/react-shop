@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import './Cart.scss';
 
 const Cart = (props) => {
   return(
@@ -42,6 +43,20 @@ const Cart = (props) => {
           })}
         </tbody>
       </Table>
+
+      {
+        props.alertState === true ?
+        ( <div className="alert">
+          <p>지금 구매하시면 신규할인 20%</p>
+          <button
+            onClick={()=>{
+              props.dispatch({type: 'close'})
+            }}
+          >
+            닫기
+          </button>
+        </div> ) : null
+      }
     </>
   )
 }
@@ -49,7 +64,8 @@ const Cart = (props) => {
 function reduxProps(state){
   return{
     // productName: state.name
-    state: state
+    state: state.reducer,
+    alertState: state.reducer2
   }
 }
 
