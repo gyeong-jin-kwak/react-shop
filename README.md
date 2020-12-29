@@ -17,6 +17,8 @@
 * yarn add node-sass
 * npm install axios
 * npm install react-transition-group
+* npm install react-redux
+* npm install redux
 
 ## Use Bootstrap
 * div.row = 12 column
@@ -168,3 +170,73 @@ useEffect(()=>{
       * `export let numContext = React.createContext()`
       * `import {numContext} from './App'`
 3. 리덕스
+  ## Redux
+    * `npm install redux react-redux` redux, react-redux 두개 설치
+    * `index.js`
+    * `import { Provider } from 'react-redux';`
+    * `<Provider></Provider>` 감싸기
+    * `import { createStore } from 'redux';` , `let store = createStore();`
+    * `<Provider store={store}>`
+    * 필요한 component 에 가서 `import { connect } from 'react-redux';`
+    * `function reduxProps(){}`
+    * `export default connect(reduxProps)(Cart);`
+```
+let store = createStore(()=>{
+  return [{id: 0, name: '멋진신발', quantity: 2}]
+});
+
+function reduxProps(state){
+  return{
+    // productName: state.name
+    state: state
+  }
+}
+
+const Cart = ({ state }) => {
+``` 
+  ## Reducer
+  * 수정은 reducer를 통해서
+  ```
+  let store = createStore(reducer);
+
+  function reducer (){
+    return [
+      {id: 0, name: '멋진신발', quantity: 2},
+      {id: 1, name: '인챈트필드 신발', quantity: 5}
+    ]
+  }
+  ..........................................................
+
+  let defaultState = [
+    {id: 0, name: '멋진신발', quantity: 2},
+    {id: 1, name: '인챈트필드 신발', quantity: 5}
+  ]
+
+  function reducer (state = defaultState, action){
+    if (action.type === 'increase'){
+      let copy = [...state]; // deep copy
+      copy[0].quantity++;
+
+      return copy
+    } else if (action.type === 'decrease') {
+      let copy = [...state];
+      copy[0].quantity--;
+
+      return copy
+    } else {
+      return state 
+    }
+    // return state
+  }
+
+  let store = createStore(reducer);
+
+  ...............................
+  <button 
+    onClick={()=>{
+      props.dispatch({type: 'increase'})
+    }}
+  >
+    +
+  </button>
+  ```
