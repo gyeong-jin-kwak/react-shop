@@ -25,7 +25,7 @@ const Cart = (props) => {
               <td>
                 <button 
                   onClick={()=>{
-                    props.dispatch({type: 'increase'})
+                    props.dispatch({type: 'increase', paload:{name: 'kim'}})
                   }}
                 >
                   +

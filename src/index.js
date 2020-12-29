@@ -17,6 +17,7 @@ let alertState = true;
 
 function reducer (state = defaultState, action){
   if (action.type === 'increase'){
+    // action.payload;
     let copy = [...state]; // deep copy
     copy[0].quantity++;
 
