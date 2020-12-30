@@ -55,9 +55,10 @@ function App() {
             <div className="container">
               <div className="row">
                 {
-                  products.map((product)=>{
+                  products.map((product, i)=>{
                     return(
-                      <Product 
+                      <Product
+                        index = {i}
                         key={product.id} 
                         title={product.title} 
                         price={product.price} 

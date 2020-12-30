@@ -253,3 +253,4 @@ const Cart = ({ state }) => {
   ```
   * reducer에 데이터를 전달할 때 `props.dispatch({type: 'increase', paload:{name: 'kim'}})`
   * reducer 안에서 `action.payload`
+      * 

@@ -19,20 +19,20 @@ const Cart = (props) => {
           {props.state.map((productInfo, i)=>{
             return(
               <tr>
-              <td>1</td>
+              <td>{i}</td>
               <td>{ productInfo.name }</td>
               <td>{ productInfo.quantity }</td>
               <td>
                 <button 
                   onClick={()=>{
-                    props.dispatch({type: 'increase', paload:{name: 'kim'}})
+                    props.dispatch({type: 'increase', payload: productInfo.id})
                   }}
                 >
                   +
                 </button>
                 <button
                   onClick={()=>{
-                    props.dispatch({type: 'decrease'})
+                    props.dispatch({type: 'decrease', payload: productInfo.id})
                   }}
                 >
                   -

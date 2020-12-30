@@ -9,22 +9,38 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
 let defaultState = [
-  {id: 0, name: '멋진신발', quantity: 2},
+  {id: 0, name: '캡모자 black', quantity: 2},
   {id: 1, name: '인챈트필드 신발', quantity: 5}
 ];
 
 let alertState = true;
 
 function reducer (state = defaultState, action){
-  if (action.type === 'increase'){
+  if(action.type === 'add'){
+    let copy = [...state];
+    console.log(action.payload);
+    let found =  state.findIndex((a)=>{return a.id === action.payload.id})
+
+    if(found >= 0){
+      let copy = [...state];
+      copy[found].quantity++;
+      return copy
+    } else {
+      let copy = [...state];
+      copy.push(action.payload);
+      return copy
+    }
+
+    return copy
+  } else if (action.type === 'increase'){
     // action.payload;
     let copy = [...state]; // deep copy
-    copy[0].quantity++;
+    copy[action.payload].quantity++;
 
     return copy
   } else if (action.type === 'decrease') {
     let copy = [...state];
-    copy[0].quantity--;
+    copy[action.payload].quantity--;
 
     return copy
   } else {

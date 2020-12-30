@@ -4,6 +4,7 @@ import { Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 import './Detail.scss';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 
 let Box = styled.div`
   padding: 20px;
@@ -15,18 +16,20 @@ let Title = styled.h2`
 `;
 
 
-const Detail = ({ products }) => {
+const Detail = (props) => {
 
   let [ alert, setAlert ] = useState(true);
   let [ input, setInput ] = useState('');
   let [ tab, setTab ] = useState(0);
   let history = useHistory();
   let { id } = useParams();
-  let product_id = products.find((product)=>{
+  let product_id = props.products.find((product)=>{
     return product.id == id
   });
   let [ num, setNum ] = useState(product_id.num);
   let [ ani, setAni ] = useState(false);
+  let product_title = product_id.title;
+  let product_key = product_id.id;
 
   useEffect(()=>{
     // setTimeout은 변수에 넣어 사용
@@ -54,7 +57,7 @@ const Detail = ({ products }) => {
 
       <div className="row">
         <div className="col-md-6">
-          <img src={"." + product_id.url} alt={product_id.title} width="100%" />
+          <img src={product_id.url} alt={product_id.title} width="100%" />
         </div>
         <div className="product-detail col-md-6 mt-4">
           <strong className="pt-5 title">{product_id.title}</strong>
@@ -66,6 +69,8 @@ const Detail = ({ products }) => {
             onClick={()=>{ 
               var newObject = num;
               setNum(newObject - 1);
+              props.dispatch({type: 'add', payload:{id: product_key, name: product_title, quantity: 1} });
+              history.push('/cart');
              }}
           >
               주문하기
@@ -148,4 +153,10 @@ const TapComponent = ({tab, aniOn}) => {
   }
 }
 
-export default Detail;
+function reduxProp(state){
+  return{
+    state: state.reducer
+  }
+}
+
+export default connect(reduxProp)(Detail);
