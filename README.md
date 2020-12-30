@@ -253,4 +253,49 @@ const Cart = ({ state }) => {
   ```
   * reducer에 데이터를 전달할 때 `props.dispatch({type: 'increase', paload:{name: 'kim'}})`
   * reducer 안에서 `action.payload`
-      * 
+  
+## 로딩할 때만 import 불러오는 코드 
+* `lazy` , `suspense`
+* `import React, { lazy, Suspense } from 'react';`
+* `let Detail = lazy(()=>{ return import('./pages/Detail.js') });`
+```
+<Suspense fallback={<div>로딩중이에요</div>}>
+  <Detail products={products} />
+</Suspense>
+```
+
+## react dev tools
+* 구글 확장프로그램
+
+## 필요한 부분만 렌더링 해주는 memo
+* `import React, { memo } from 'react'`
+* `memo() 로 감싸준다`
+```
+let Child2 = memo(function(){
+  useEffect(()=>{
+    console.log('렌더링됨2')
+    return <div>222</div>
+  })
+})
+```
+
+## PWA (progressive web app)
+* 앱처럼 발행 가능하도록
+* 설치하시겠습니까 ? app 처럼
+* app 바로가기와 마찬가지
+* 두개의 파일 필요 `manifest.json` `service-worker.js`
+* index.js `serviceWorker.register();`
+* `yarn build`
+
+## local stroage
+* 개발자도구 - allpication - localstrage
+* session storage / local storage 차이점 
+  * session 은 끄면 날아감
+  * loacal storage - text로 5mb 정도 저장 가능
+* `localStorage.setItem('name', 'kwak')`
+* `localStorage.getItem('name')`
+* `localStorage.removeItem('name')`
+* object, array 는 자료형이 깨짐
+* object 는 json 형태로 저장해야 함`localStorage.setItem('obj', JSON.stringify({name: 'kwak'}))`
+* `var a = localStorage.getItem('obj')`
+* `JSON.parse(a)`

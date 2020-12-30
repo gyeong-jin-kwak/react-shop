@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Navbar, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './App.css';
 import Detail from './pages/Detail';
+// let Detail = lazy(()=>{ return import('./pages/Detail.js') });
 import Product from './components/Product';
 import Cart from './components/Cart';
 import Loading from './components/Loading';
@@ -102,7 +103,9 @@ function App() {
         </Route>
         
         <Route path="/detail/:id">
-          <Detail products={products} />
+          {/* <Suspense fallback={<div>로딩중이에요</div>}> */}
+            <Detail products={products} />
+          {/* </Suspense> */}
         </Route>
 
         {/* <Route path="/:id">
