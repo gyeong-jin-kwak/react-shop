@@ -42,6 +42,18 @@ const Detail = (props) => {
     // [] 는 조건, 비어있을 시 로드 될 때 딱 한번만 적용됨
   }, [ alert ]);
 
+  useEffect(()=>{
+    var arr = localStorage.getItem('watched');
+
+    if(arr === null){ arr = [] } else { arr = JSON.parse(arr) };
+
+    arr.push(id);
+    arr = new Set(arr);// 중복제거
+    arr = [...arr]; //소괄호를 벗겨서 대괄호를 넣어 array를 만듦
+
+    localStorage.setItem('warched', JSON.stringify(arr) )
+  }, []);
+
   return (
     <div className="container">
       {

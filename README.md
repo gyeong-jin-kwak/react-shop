@@ -299,3 +299,4 @@ let Child2 = memo(function(){
 * object 는 json 형태로 저장해야 함`localStorage.setItem('obj', JSON.stringify({name: 'kwak'}))`
 * `var a = localStorage.getItem('obj')`
 * `JSON.parse(a)`
+* set 자료형 -> 중복을 제거할 때 array 대신 사용할 수 있는 함수`arr = new Set(arr);`
